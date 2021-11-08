@@ -1,0 +1,7 @@
+# ctrnand_explorer
+Simple ctr nand explorer
+
+
+Features : 
+    - Dump firm0 / firm1 partitions
+    - Decrypt OTP
