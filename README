@@ -1,6 +1,12 @@
 CTRNAND_EXPLORER
 Simple ctr nand explorer
 
+How to use ? :
+    - Provide your nand backup in root of project under "nand.bin"
+    - Provide your boot9.bin (START + SELECT + X on boot with b9s)
+    - optional : you can provide hash of your nand under "nand.bin.sha"
+    - optional : you can provide your otp.bin under "otp.bin" (START + SELECT + X on boot with b9s)
+    - Enjoy the script ! (no need args)
 
 Features : 
     - Dump firm0 / firm1 partitions

@@ -36,7 +36,7 @@ const OTP = require('./crypto/otp')
         const essential = nand.slice(0x200, 0x200+0xA0)
         if(essential == '\0' * 0xA0 || essential == '\xFF' * 0xA0)
         {
-            throw new Error("OTP can't be find")
+            throw new Error("Essentials can't be find")
         }
 
         for(let i = 0 ; i < essential.length ; i+=0x10)
