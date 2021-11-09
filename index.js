@@ -74,6 +74,16 @@ const OTP = require('./crypto/otp')
             throw new Error('Failed to open nand cid (needed)')
         }
     }
+
+    let keys3f = boot9.extractSlot0x3FNormalKeyAndIV()
+
+    let NandInfos = `\n
+    \   Nand CID    : 0x${nandCid.toString('hex')}
+    \   OTP key3F   : 0x${keys3f[0].toString('hex')}
+    \   OTP IV 3F   : 0x${keys3f[1].toString('hex')}
+    \   KeySlot0x6  : 0x${keySlots.Key0x06.toString('hex')}
+    `
+    console.log(NandInfos)
     
     const nandCidhash = crypto.createHash('sha256').update(nandCid).digest()
     let nandcid = BigInt("0x"+nandCidhash.slice(0x0, 0x10).toString('hex'))

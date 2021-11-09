@@ -41,6 +41,7 @@ module.exports = class boot9 {
 
     setupNandKeyslots()
     {
+        if(!this.otp || this.otp?.encryptedStatus) return console.log("OTP not decrypted, can't setup Nand keyslots")
         // First we need to configure Code BlockX 0 for generate unique keyX
         const conunique_dataptr = this.otp.otpData.slice(0x90, 0x90+0x1C)
         const tmpBuffer = Buffer.concat([conunique_dataptr, this.bootrom_dataptr.slice(0x0, 0x40-0x1C)])
