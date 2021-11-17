@@ -63,8 +63,10 @@ const OTP = require('./crypto/otp')
     
     const firm0Offset = 0x0B130000
     const firm1Offset = 0x0B530000
+    const CTRFATNandOffset = 0x0B95CA00
     const firm0 = nand.slice(firm0Offset, firm0Offset+0x00400000)
     const firm1 = nand.slice(firm1Offset, firm1Offset+0x00400000)
+    const CTRNandFAT = nand.slice(CTRFATNandOffset, CTRFATNandOffset+0x2F3E3600)
 
     // get Nand cid
     if(!nandCid){
@@ -91,12 +93,20 @@ const OTP = require('./crypto/otp')
     const firm0Counter = Buffer.from((nandcid+BigInt(firm0Offset >> 4)).toString(16), 'hex')
     const firm1Counter = Buffer.from((nandcid+BigInt(firm1Offset >> 4)).toString(16), 'hex')
 
+    const CTRFATNandCounter = Buffer.from((nandcid+BigInt(CTRFATNandOffset >> 4)).toString(16), 'hex')
+
     const aesCtrFirm0 = new aes.ModeOfOperation.ctr(keySlots.Key0x06, firm0Counter)
     const decryptedFirm0 = aesCtrFirm0.decrypt(firm0)
 
     const aesCtrFirm1 = new aes.ModeOfOperation.ctr(keySlots.Key0x06, firm1Counter)
     const decryptedFirm1 = aesCtrFirm1.decrypt(firm1)
 
+    const aesCtrCTRNANDFAT = new aes.ModeOfOperation.ctr(keySlots.Key0x04, CTRFATNandCounter)
+    const decryptedFATCTRNand = aesCtrCTRNANDFAT.decrypt(CTRNandFAT)
+
     await fs.promises.writeFile('./firm0.bin', decryptedFirm0)
     await fs.promises.writeFile('./firm1.bin', decryptedFirm1)
+
+    console.log("Decrypt and dump CTRNand Fat filesystem please wait...")
+    await fs.promises.writeFile('CTRNandFAT16.img', decryptedFATCTRNand)
 })()
