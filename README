@@ -10,7 +10,7 @@ How to use ? :
 
 Features : 
     - Dump firm0 / firm1 partitions (decrypted)
-    - Dump CTRNandFAT16 partition (decrypted)
+    - Dump CTRNandFAT16 partition (OLD 3DS ONLY decrypted)
     - Decrypt OTP
 
 Plained features :
