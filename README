@@ -9,5 +9,11 @@ How to use ? :
     - Enjoy the script ! (no need args)
 
 Features : 
-    - Dump firm0 / firm1 partitions
+    - Dump firm0 / firm1 partitions (decrypted)
+    - Dump CTRNandFAT16 partition (decrypted)
     - Decrypt OTP
+
+Plained features :
+    - Basic FAT16 parser in c++ (with node cpp)
+    - TWLNandFAT16 Dump and parse (decrypted)
+    - TWLNandPhotoFAT12 Dump (maybe parse) (decrypted)
