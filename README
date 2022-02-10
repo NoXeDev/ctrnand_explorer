@@ -9,11 +9,11 @@ How to use ? :
     - Enjoy the script ! (no need args)
 
 Features : 
-    - Dump firm0 / firm1 partitions (decrypted)
-    - Dump CTRNandFAT16 partition (OLD 3DS ONLY decrypted)
+    - Exctract firm0 / firm1 partitions (decrypted)
+    - Exctract CTRNandFAT16 partition (OLD 3DS ONLY decrypted)
     - Decrypt OTP
 
 Plained features :
-    - Basic FAT16 parser in c++ (with node cpp)
-    - TWLNandFAT16 Dump and parse (decrypted)
-    - TWLNandPhotoFAT12 Dump (maybe parse) (decrypted)
+    - CTRNandFat16 filesystem extraction (decrypted)
+    - TWLNandFAT16 extraction and parse (decrypted)
+    - TWLNandPhotoFAT12 extraction (maybe parse) (decrypted)
