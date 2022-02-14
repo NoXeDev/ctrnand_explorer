@@ -24,8 +24,9 @@ module.exports = class Nand {
 
         if(fs.existsSync('./otp.bin')){
             this.otp = new OTP(fs.readFileSync('./otp.bin'))
+        } else {
+            this.otp = new OTP(this._parseEssential('otp'))
         }
-        this.otp = new OTP(this._parseEssential('otp'))
         this.boot9 = new boot9(fs.readFileSync('./boot9.bin'))
         this.boot9.dumpAndDecryptOTP(this.otp)
         this.keySlots = this.boot9.setupNandKeyslots()
